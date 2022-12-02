@@ -44,7 +44,7 @@ INSERT INTO race_course (pilot_id, race_name, closing_date, number_of_laps) VALU
 INSERT INTO race_course (pilot_id, race_name, closing_date, number_of_laps) VALUES ('1234567B', 'Luigi Race', sysdate() + 35, 8);
 INSERT INTO race_course (pilot_id, race_name, closing_date, number_of_laps) VALUES ('1234567C', 'Bowser Race', sysdate() + 40, 8);
 
--- SELECT RACE COURSE
+-- SELECT RACE COURSE -> List of Race Course
 SELECT * FROM race_course;
 
 -- DESCRIBE PILOT TABLE
@@ -54,6 +54,8 @@ DESC pilot;
 INSERT INTO pilot (pilot_id, pilot_name, drone_name) VALUES ('1234567A', 'DARYL GOH', 'HACKERDRONE_DG');
 INSERT INTO pilot (pilot_id, pilot_name, drone_name) VALUES ('1234567B', 'YIZHUN SIM', 'HACKERDRONE_YZ');
 
+INSERT INTO pilot (pilot_id, pilot_name, drone_name) VALUES ('1234567C', 'DARREN', 'HACKERDRONE_DAR');
+
 -- SELECT PILOT
 SELECT * FROM pilot;
 
@@ -61,6 +63,8 @@ SELECT * FROM pilot;
 DESC laps;
 
 -- INSERT INTO LAPS
+
+-- Daryl
 INSERT INTO laps (pilot_id, race_course_id, time) VALUES ('1234567A', 1, '10.10');
 INSERT INTO laps (pilot_id, race_course_id, time) VALUES ('1234567A', 1, '9.15');
 INSERT INTO laps (pilot_id, race_course_id, time) VALUES ('1234567A', 1, '9.25');
@@ -70,14 +74,22 @@ INSERT INTO laps (pilot_id, race_course_id, time) VALUES ('1234567A', 1, '10.20'
 INSERT INTO laps (pilot_id, race_course_id, time) VALUES ('1234567A', 1, '10.30');
 INSERT INTO laps (pilot_id, race_course_id, time) VALUES ('1234567A', 1, '9.33');
 
+-- Yizhun
+INSERT INTO laps (pilot_id, race_course_id, time) VALUES ('1234567B', 1, '10.30');
+
+-- DARREN
+INSERT INTO laps (pilot_id, race_course_id, time) VALUES ('1234567C', 2, '10.19');
+
 -- SELECT LAPS
 SELECT * FROM laps;
 
+-- SELECT LIST OF RACE COURSE
+SELECT rc.race_course_id, rc.race_name from race_course rc;
 
--- SELECT RACE PARTICAPTION BY PILOTS
+-- SELECT RACE PARTICAPTION BY PILOTS -> list of pilot
 SELECT rc.race_name, p.pilot_id, p.pilot_name
 	FROM race_course rc, pilot p 
-	WHERE rc.pilot_id = p.pilot_id;
+	WHERE rc.race_course_id = 2;
 
 -- SELECT LAP TIMER BY PILOTS
 SELECT p.pilot_name, l.lap_id, l.time
