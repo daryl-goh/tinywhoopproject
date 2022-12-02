@@ -1,0 +1,9 @@
+/* Carousell Section */
+
+#intro {
+  width: 100%;
+  height: calc(100vh - 110px);
+  background: url("/images/HomeIndex.jpg") top center;
+  background-size: cover;
+  position: relative;
+}
