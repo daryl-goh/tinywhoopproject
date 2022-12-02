@@ -9,7 +9,7 @@ public class Queries {
             FROM race_course r, pilot p 
             WHERE r.pilot_id = p.pilot_id;
             """;
-    public static String SQL_SELECT = """
+    public static String SQL_SELECT_PILOT = """
             
             """;
 }
