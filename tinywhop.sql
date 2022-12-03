@@ -110,7 +110,7 @@ INSERT INTO laps (pilot_id, race_id, time) VALUES ('1234567C', 2, '10.19');
 SELECT * FROM laps;
 
 -- SQL_RETRIEVE_ALL_RACE_COURSES
-SELECT DISTINCT(r.race_name)
+SELECT DISTINCT(r.race_name), rd.number_of_laps, rd.closing_date
 	FROM race_details rd, race r
     WHERE rd.race_id = r.race_id;
 
@@ -130,9 +130,7 @@ SELECT p.pilot_name, l.lap_id, l.time
 		on l.race_id  = r.race_id
 	LEFT JOIN pilot p
 		on l.pilot_id = p.pilot_id
-	WHERE l.pilot_id = '1234567C' and l.race_id = 2;
-	
-
+	WHERE l.pilot_id = '1234567A' and l.race_id = 1;
 
 ----------------------
 
