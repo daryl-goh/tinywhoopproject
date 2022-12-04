@@ -1,24 +1,25 @@
 package sg.edu.nus.iss.tinywhoopproject.model;
 
 import org.joda.time.DateTime;
+import org.springframework.jdbc.support.rowset.SqlRowSet;
 
 public class Lap {
-    private Integer id;
-    private Integer pilotId;
+    private String pilotId;
+    private String pilotName;
     private Integer raceId;
     private double time;
     
-    public Integer getId() {
-        return id;
-    }
-    public void setId(Integer id) {
-        this.id = id;
-    }
-    public Integer getPilotId() {
+    public String getPilotId() {
         return pilotId;
     }
-    public void setPilotId(Integer pilotId) {
+    public void setPilotId(String pilotId) {
         this.pilotId = pilotId;
+    }
+    public String getPilotName() {
+        return pilotName;
+    }
+    public void setPilotName(String pilotName) {
+        this.pilotName = pilotName;
     }
     public Integer getRaceId() {
         return raceId;
@@ -31,5 +32,14 @@ public class Lap {
     }
     public void setTime(double time) {
         this.time = time;
+    }
+
+    public static Lap create (SqlRowSet rs) {
+        Lap lap = new Lap();
+        lap.setPilotId(rs.getString("pilot_id"));
+        lap.setPilotName(rs.getString("pilot_name"));
+        lap.setRaceId(rs.getInt("race_id"));
+        lap.setTime(rs.getDouble("time"));
+        return lap;
     }
 }

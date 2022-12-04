@@ -8,6 +8,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Repository;
 
+import sg.edu.nus.iss.tinywhoopproject.model.Pilot;
 import sg.edu.nus.iss.tinywhoopproject.model.RaceCourse;
 
 import static sg.edu.nus.iss.tinywhoopproject.repository.Queries.*;
@@ -19,15 +20,28 @@ public class RaceRepository {
     
     public List<RaceCourse> getAllRaceCourse(){
         List<RaceCourse> races = new ArrayList<>();
+        List<Pilot> pilotsByRaceCourse = new ArrayList<>();
 
-        SqlRowSet result = jdbcTemplate.queryForRowSet(SQL_RETRIEVE_ALL_RACE_COURSES);
-
-        int raceId = 1;
-        while(result.next()){
-            races.add(RaceCourse.create(result, raceId));
+        SqlRowSet raceCourseResults = jdbcTemplate.queryForRowSet(SQL_RETRIEVE_ALL_RACE_COURSES);
+        
+        while(raceCourseResults.next()){
+            int raceCourseId = raceCourseResults.getInt("race_id");
+            SqlRowSet racePilotParticipationResults = jdbcTemplate.queryForRowSet(SQL_RETRIEVE_RACE_PARTICAPTION_PILOTS, raceCourseId);
+           
+            while (racePilotParticipationResults.next()){
+                pilotsByRaceCourse.add(Pilot.create(racePilotParticipationResults));
+            }
+          
+            races.add(RaceCourse.create(raceCourseResults, pilotsByRaceCourse));       
         }
+        System.out.println(races);
+        
         return races;
     }
+
+    
+
+
  
 
 }

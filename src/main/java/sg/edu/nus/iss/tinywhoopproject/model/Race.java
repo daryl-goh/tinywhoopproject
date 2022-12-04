@@ -1,11 +1,13 @@
 package sg.edu.nus.iss.tinywhoopproject.model;
 
+import org.springframework.jdbc.support.rowset.SqlRowSet;
+
 public class Race {
     private Integer id;
     private String raceName;
 
     public Race(){
-        
+
     }
 
     public Race(String raceName){
@@ -23,5 +25,12 @@ public class Race {
     }
     public void setRaceName(String raceName) {
         this.raceName = raceName;
+    }
+    
+    public static Race create (SqlRowSet rs) {
+        Race rc = new Race();
+        rc.setId(rs.getInt("race_id"));
+        rc.setRaceName(rs.getString("race_name"));
+        return rc;
     }
 }

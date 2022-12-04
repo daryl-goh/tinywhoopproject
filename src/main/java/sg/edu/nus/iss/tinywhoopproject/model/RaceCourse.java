@@ -9,6 +9,7 @@ import org.springframework.jdbc.support.rowset.SqlRowSet;
 public class RaceCourse {
     private Integer id;
     private Race race;
+    private List<Pilot> pilot;
     private DateTime closingDate;
     private Integer numberOfLaps;
 
@@ -24,6 +25,12 @@ public class RaceCourse {
     public void setRace(Race race) {
         this.race = race;
     }
+    public List<Pilot> getPilot() {
+        return pilot;
+    }
+    public void setPilot(List<Pilot> pilot) {
+        this.pilot = pilot;
+    }
     public DateTime getClosingDate() {
         return closingDate;
     }
@@ -37,12 +44,13 @@ public class RaceCourse {
         this.numberOfLaps = numberOfLaps;
     }
 
-    public static RaceCourse create (SqlRowSet rs, Integer recordId) {
+    public static RaceCourse create (SqlRowSet raceCourseResult, List<Pilot> pilots) {
         RaceCourse rc = new RaceCourse();
-        rc.setId(recordId);
-        rc.setRace(new Race(rs.getString("race_name")));
-        rc.setClosingDate(new DateTime(DateTimeFormat.forPattern("dd/MM/yyyy").parseDateTime(rs.getString("closing_date"))));
-        rc.setNumberOfLaps(rs.getInt("number_of_laps"));
+        rc.setId(raceCourseResult.getInt("race_id"));
+        rc.setRace(new Race(raceCourseResult.getString("race_name")));
+        rc.setPilot(pilots);
+        rc.setClosingDate(new DateTime(DateTimeFormat.forPattern("dd/MM/yyyy").parseDateTime(raceCourseResult.getString("closing_date"))));
+        rc.setNumberOfLaps(raceCourseResult.getInt("number_of_laps"));
         return rc;
     }
 
