@@ -114,23 +114,55 @@ SELECT DISTINCT(r.race_name), rd.number_of_laps, rd.closing_date
 	FROM race_details rd, race r
     WHERE rd.race_id = r.race_id;
 
+SELECT DISTINCT(rd.race_id), rd.pilot_id, rd.closing_date, rd.number_of_laps, r.race_name
+	FROM race_details rd, race r
+    WHERE rd.race_id = r.race_id
+    ORDER BY rd.race_id;
+    
+SELECT DISTINCT(rd.race_id), rd.closing_date, rd.number_of_laps, r.race_name
+	FROM race_details rd, race r
+    WHERE rd.race_id = r.race_id;
+    
+SELECT rd.race_id, rd.pilot_id
+	FROM race_details rd, race r
+    WHERE rd.race_id = r.race_id
+    AND rd.race_id = 2;
+   
+-- SQL_RETRIEVE_ALL_PILOT
+SELECT * FROM pilot;
+    
+-- SQL_RETRIEVE_NUMBER_OF_PILOTS_PARTICAPATION_IN_A_RACE
+SELECT COUNT(rd.pilot_id) AS NumberOfPilots,  rd.race_id
+	FROM race_details rd, race r
+    WHERE rd.race_id = r.race_id
+    GROUP BY rd.race_id;
+
 -- SQL_RETRIEVE_RACE_PARTICAPTION_PILOTS
-SELECT r.race_name, p.pilot_name
+SELECT r.race_name, p.pilot_name, rd.pilot_id
 	FROM race_details rd
     LEFT JOIN race r
     ON rd.race_id = r.race_id
     LEFT JOIN pilot p
     on rd.pilot_id = p.pilot_id
-	WHERE r.race_id = 3;
+	WHERE r.race_id = 2;
+    
+-- SQL_RETRIEVE_RACE_PARTICAPTION_PILOTS
+SELECT rd.pilot_id, p.pilot_name, p.drone_name
+	FROM race_details rd
+    LEFT JOIN race r
+    ON rd.race_id = r.race_id
+    LEFT JOIN pilot p
+    on rd.pilot_id = p.pilot_id
+	WHERE r.race_id = 2;
 
 -- SQL_RETRIEVE_LAPTIMINGS_OF_PILOT_PARTICAPTION_BY_RACE
-SELECT p.pilot_name, l.lap_id, l.time
+SELECT p.pilot_id, p.pilot_name, l.race_id, l.time
 	FROM laps l
     LEFT JOIN race r
 		on l.race_id  = r.race_id
 	LEFT JOIN pilot p
 		on l.pilot_id = p.pilot_id
-	WHERE l.pilot_id = '1234567A' and l.race_id = 1;
+	WHERE l.pilot_id = '1234567B' and l.race_id = 1;
 
 ----------------------
 
@@ -140,5 +172,3 @@ DROP TABLE laps;
 DROP TABLE pilot;
 DROP TABLE race_details;
 DROP TABLE race;
-
-
