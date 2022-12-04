@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.joda.time.DateTime;
 import org.joda.time.format.DateTimeFormat;
+import org.joda.time.format.DateTimeFormatter;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 
 public class RaceCourse {
@@ -49,8 +50,18 @@ public class RaceCourse {
         rc.setId(raceCourseResult.getInt("race_id"));
         rc.setRace(new Race(raceCourseResult.getString("race_name")));
         rc.setPilot(pilots);
-        rc.setClosingDate(new DateTime(DateTimeFormat.forPattern("dd/MM/yyyy").parseDateTime(raceCourseResult.getString("closing_date"))));
+        String dateTime = raceCourseResult.getString("closing_date");
+        // Format for input
+        DateTimeFormatter dtf = DateTimeFormat.forPattern("yyyy-MM-dd");
+        // Parsing the date
+        DateTime jodatime = dtf.parseDateTime(dateTime);
+        rc.setClosingDate(jodatime);
         rc.setNumberOfLaps(raceCourseResult.getInt("number_of_laps"));
+     
+
+      
+
+
         return rc;
     }
 

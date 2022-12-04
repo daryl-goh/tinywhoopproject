@@ -34,7 +34,6 @@ public class RaceRepository {
           
             races.add(RaceCourse.create(raceCourseResults, pilotsByRaceCourse));       
         }
-        System.out.println(races);
         
         return races;
     }

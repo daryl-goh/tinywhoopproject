@@ -18,8 +18,8 @@ public class RaceCourseController {
     // Landing Page to Race Courses Page
     @GetMapping(path={"/racecourses"})
     public String raceCourses(Model model) {
-        // List<RaceCourse> raceCourses = raceCourseService.retrieveAllRaceCourse();
-        // model.addAttribute("listOfRaceCourses", raceCourses);
+        List<RaceCourse> raceCourses = raceCourseService.retrieveAllRaceCourse();
+        model.addAttribute("listOfRaceCourses", raceCourses);
         return "racecourses";
     }
 

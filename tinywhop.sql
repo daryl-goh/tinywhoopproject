@@ -27,7 +27,7 @@ CREATE table race_details (
 	id int auto_increment not null,
 	race_id int not null,
     pilot_id char(8) not null,
-    closing_date datetime,
+    closing_date date not null,
     number_of_laps int,
     primary key (id),
     foreign key (race_id) references race (race_id)
@@ -110,15 +110,6 @@ INSERT INTO laps (pilot_id, race_id, time) VALUES ('1234567C', 2, '10.19');
 SELECT * FROM laps;
 
 -- SQL_RETRIEVE_ALL_RACE_COURSES
-SELECT DISTINCT(r.race_name), rd.number_of_laps, rd.closing_date
-	FROM race_details rd, race r
-    WHERE rd.race_id = r.race_id;
-
-SELECT DISTINCT(rd.race_id), rd.pilot_id, rd.closing_date, rd.number_of_laps, r.race_name
-	FROM race_details rd, race r
-    WHERE rd.race_id = r.race_id
-    ORDER BY rd.race_id;
-    
 SELECT DISTINCT(rd.race_id), rd.closing_date, rd.number_of_laps, r.race_name
 	FROM race_details rd, race r
     WHERE rd.race_id = r.race_id;

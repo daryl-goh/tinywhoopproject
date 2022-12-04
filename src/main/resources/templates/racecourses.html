@@ -14,15 +14,36 @@
     <div class="title">
       <h1>List of Race Courses</h1>
     
-    <br><br>
+    <!-- <br><br>
 
     
         
             1. <a class="raceonepilots" href="/raceonepilots">Race One</a> <br>
             2. Race Two <br>
             3. Race Three <br>
-            4. Race Four <br>
+            4. Race Four <br> -->
         
+    </div>
+
+    <div>
+        <table id="result-table" class="table table-striped">
+            <thead>
+                <tr>
+                  <td>Race Id</td>
+                  <td>Race Name</td>
+                  <td>Number Of Laps</td>
+                  <td>Closing Date</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="race: ${listOfRaceCourses}">
+                  <td>[[${race.id}]]</td>
+                  <td>[[${race.race.raceName}]]</td>
+                  <td>[[${race.numberOfLaps}]]</td>
+                  <td>[[${race.closingDate}]]</td>
+                </tr>
+            </tbody>
+          </table>
     </div>
 
     <br><br>
