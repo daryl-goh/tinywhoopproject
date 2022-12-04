@@ -1,9 +1,21 @@
+/* Title Section */
+
+.title {
+  text-align: center;
+}
+
+
 /* Carousell Section */
 
-#intro {
-  width: 100%;
-  height: calc(100vh - 110px);
-  background: url("/images/HomeIndex.jpg") top center;
-  background-size: cover;
-  position: relative;
+.carouselsize {
+  width: 1200px;
+  margin: auto;
+  width: 50%;
+  padding: 10px;
+}
+
+/* Enter Race Button Section */
+
+.buttons {
+  text-align: center;
 }
