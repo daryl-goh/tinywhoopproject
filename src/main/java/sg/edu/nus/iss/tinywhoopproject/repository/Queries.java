@@ -16,7 +16,7 @@ public class Queries {
             WHERE r.race_id = ?;
             """;
     public static final String SQL_RETRIEVE_ALL_PILOTS = """
-            SELECT * FROM pilots;
+            SELECT * FROM pilot;
             """;
     public static final String SQL_RETRIEVE_LAPTIMINGS_OF_PILOT_PARTICAPTION_BY_RACE= """
             SELECT p.pilot_name, l.lap_id, l.time

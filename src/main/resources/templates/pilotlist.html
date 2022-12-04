@@ -13,19 +13,26 @@
     <br><br>
     <div class="title">
       <h1>List of Pilots</h1>
-    
-    <br><br>
-
-   
-        
-            1. Aden <br>
-            2. Bob <br>
-            3. Clark <br>
-            4. Don <br>
-       
     </div>
 
-    <br><br>
+    <div>
+        <table id="result-table" class="table table-striped">
+            <thead>
+                <tr>
+                  <td>Pilot ID</td>
+                  <td>Pilot Name</td>
+                  <td>Drone Name</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="pilot: ${listOfPilots}">
+                  <td>[[${pilot.id}]]</td>
+                  <td>[[${pilot.pilotName}]]</td>
+                  <td>[[${pilot.droneName}]]</td>
+                </tr>
+            </tbody>
+          </table>
+    </div>
 
     <!-- Add Pilot -->
     <div class="buttons">
