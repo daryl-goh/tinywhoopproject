@@ -24,7 +24,7 @@ public class PilotController {
         return "pilotlist";
     }
     
-    // Race One Pilots to Lap Timer Page
+    // Race Course Pilots to Lap Timer Page
     @GetMapping(path={"/laptimer"})
     public String lapTimer(Model model) {
         return "laptimer";

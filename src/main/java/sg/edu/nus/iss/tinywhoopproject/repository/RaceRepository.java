@@ -38,9 +38,18 @@ public class RaceRepository {
         return races;
     }
 
-    
+
+    public List<RaceCourse> getPilotsByRace(int raceId){
+        List<RaceCourse> races = new ArrayList<>();
+        
+        SqlRowSet result = jdbcTemplate.queryForRowSet(SQL_RETRIEVE_RACE_PARTICAPTION_PILOTS, raceId);
+
+        while (result.next()) {
+            races.add(RaceCourse.create(result));
+        }
+        return races;
+    }
 
 
- 
 
 }

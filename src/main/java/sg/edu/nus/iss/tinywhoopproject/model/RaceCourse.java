@@ -57,12 +57,25 @@ public class RaceCourse {
         DateTime jodatime = dtf.parseDateTime(dateTime);
         rc.setClosingDate(jodatime);
         rc.setNumberOfLaps(raceCourseResult.getInt("number_of_laps"));
-     
-
-      
-
 
         return rc;
     }
+
+    public static RaceCourse create (SqlRowSet raceCourseResult) {
+        RaceCourse rc = new RaceCourse();
+        rc.setId(raceCourseResult.getInt("race_id"));
+        rc.setRace(new Race(raceCourseResult.getString("race_name")));
+        
+        String dateTime = raceCourseResult.getString("closing_date");
+        // Format for input
+        DateTimeFormatter dtf = DateTimeFormat.forPattern("yyyy-MM-dd");
+        // Parsing the date
+        DateTime jodatime = dtf.parseDateTime(dateTime);
+        rc.setClosingDate(jodatime);
+        rc.setNumberOfLaps(raceCourseResult.getInt("number_of_laps"));
+
+        return rc;
+    }
+
 
 }
