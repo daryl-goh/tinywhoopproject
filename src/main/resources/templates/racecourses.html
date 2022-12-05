@@ -38,7 +38,7 @@
             <tbody>
                 <tr th:each="race: ${listOfRaceCourses}">
                   <td>[[${race.id}]]</td>
-                  <td><a th:href="@{'/racecoursepilots/'}">[[${race.race.raceName}]]</a></td>
+                  <td><a th:href="@{/racecoursepilots/{raceId}(raceId=${race.id})}">[[${race.race.raceName}]]</a></td>
                   <td>[[${race.numberOfLaps}]]</td>
                   <td>[[${race.closingDate}]]</td>
                 </tr>

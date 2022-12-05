@@ -3,6 +3,9 @@ package sg.edu.nus.iss.tinywhoopproject.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -28,7 +31,7 @@ public class RaceCourseController {
     
 
     // Race Courses to Race Course Pilots Page
-    @GetMapping(path={"/racecoursepilots"})
+    @GetMapping(path={"/racecoursepilots/{raceId}"})
     public String raceCoursePilots(Model model, @PathVariable Integer raceId) {
         List<RaceCourse> race = raceCourseService.retrievePilotsByRace(raceId);
         System.out.println(race + "????");;
@@ -36,6 +39,4 @@ public class RaceCourseController {
 
         return "racecoursepilots";
     }
-
-
 }

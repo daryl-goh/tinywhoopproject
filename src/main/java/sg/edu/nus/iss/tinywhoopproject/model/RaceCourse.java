@@ -61,20 +61,20 @@ public class RaceCourse {
         return rc;
     }
 
-    public static RaceCourse create (SqlRowSet raceCourseResult) {
-        RaceCourse rc = new RaceCourse();
-        rc.setId(raceCourseResult.getInt("race_id"));
-        rc.setRace(new Race(raceCourseResult.getString("race_name")));
+    public static RaceCourse create (SqlRowSet result) {
+        RaceCourse rc2 = new RaceCourse();
+        rc2.setId(result.getInt("race_id"));
+        rc2.setRace(new Race(result.getString("race_name")));
         
-        String dateTime = raceCourseResult.getString("closing_date");
+        String dateTime = result.getString("closing_date");
         // Format for input
         DateTimeFormatter dtf = DateTimeFormat.forPattern("yyyy-MM-dd");
         // Parsing the date
         DateTime jodatime = dtf.parseDateTime(dateTime);
-        rc.setClosingDate(jodatime);
-        rc.setNumberOfLaps(raceCourseResult.getInt("number_of_laps"));
+        rc2.setClosingDate(jodatime);
+        rc2.setNumberOfLaps(result.getInt("number_of_laps"));
 
-        return rc;
+        return rc2;
     }
 
 
