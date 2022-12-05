@@ -13,6 +13,7 @@
     <br><br>
     <div class="title">
     <h1>Race Course Pilots</h1>
+    <h2>[[${pilotsByRace.race.raceName}]]</h2>
     
     <br><br>
 
@@ -29,16 +30,17 @@
         <table id="result-table" class="table table-striped">
             <thead>
                 <tr>
+                    
+                  <td>Pilot Name</td>
+                  <td>Drone Name</td>
                   <td>ID</td>
-                  <!-- <td>Race</td>
-                  <td>Pilot</td> -->
                 </tr>
             </thead>
             <tbody>
-                <tr th:each="pilots: ${pilotsByRace}">
+                <tr th:each="pilots: ${pilotsByRace.pilot}">
+                  <td>[[${pilots.pilotName}]]</td>
+                  <td>[[${pilots.droneName}]]</td>
                   <td>[[${pilots.id}]]</td>
-                  <!-- <td>[[${pilots.race}]]</td>
-                  <td>[[${pilots.pilot}]]</td> -->
                 </tr>
             </tbody>
           </table>

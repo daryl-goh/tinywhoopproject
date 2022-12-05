@@ -129,7 +129,7 @@ SELECT COUNT(rd.pilot_id) AS NumberOfPilots,  rd.race_id
     GROUP BY rd.race_id;
 
 -- SQL_RETRIEVE_RACE_PARTICAPTION_PILOTS
-SELECT r.race_name, p.pilot_name, rd.pilot_id
+SELECT rd.race_id, r.race_name, rd.pilot_id, p.pilot_name, p.drone_name
 	FROM race_details rd
     LEFT JOIN race r
     ON rd.race_id = r.race_id

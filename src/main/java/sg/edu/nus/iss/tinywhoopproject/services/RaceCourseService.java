@@ -18,7 +18,7 @@ public class RaceCourseService {
         return raceRepository.getAllRaceCourse();
     }
 
-    public List<RaceCourse> retrievePilotsByRace(Integer raceId){
-        return raceRepository.getPilotsByRace(raceId);
+    public RaceCourse retrievePilotsByRace(Integer raceId){
+        return raceRepository.getRaceCoursePilots(raceId);
     }
 }

@@ -7,7 +7,7 @@ public class Queries {
             WHERE rd.race_id = r.race_id;
             """;
     public static final String SQL_RETRIEVE_RACE_PARTICAPTION_PILOTS = """
-            SELECT rd.pilot_id, p.pilot_name, p.drone_name
+            SELECT rd.race_id, r.race_name, rd.pilot_id, p.pilot_name, p.drone_name
             FROM race_details rd
             LEFT JOIN race r
             ON rd.race_id = r.race_id

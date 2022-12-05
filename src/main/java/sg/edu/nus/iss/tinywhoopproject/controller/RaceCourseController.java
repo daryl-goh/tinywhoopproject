@@ -33,7 +33,6 @@ public class RaceCourseController {
     @GetMapping(path={"/racecourses"})
     public String raceCourses(Model model) {
         List<RaceCourse> raceCourses = raceCourseService.retrieveAllRaceCourse();
-        System.out.println(raceCourses + "!!!!!");
         model.addAttribute("listOfRaceCourses", raceCourses);
         return "racecourses";
     }
@@ -43,8 +42,7 @@ public class RaceCourseController {
     // Race Courses to Race Course Pilots Page
     @GetMapping(path={"/racecoursepilots/{raceId}"})
     public String raceCoursePilots(Model model, @PathVariable Integer raceId) {
-        List<RaceCourse> race = raceCourseService.retrievePilotsByRace(raceId);
-        System.out.println(race + "????");;
+        RaceCourse race = raceCourseService.retrievePilotsByRace(raceId);
         model.addAttribute("pilotsByRace", race);
 
         return "racecoursepilots";

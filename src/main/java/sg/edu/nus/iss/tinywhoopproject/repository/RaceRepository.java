@@ -39,18 +39,31 @@ public class RaceRepository {
     }
 
 
-    public List<RaceCourse> getPilotsByRace(Integer raceId){
-        List<RaceCourse> pilotList = new ArrayList<>();
+    // public List<RaceCourse> getPilotsByRace(Integer raceId){
+    //     List<Pilot> pilotList = new ArrayList<>();
         
+        // SqlRowSet result = jdbcTemplate.queryForRowSet(SQL_RETRIEVE_RACE_PARTICAPTION_PILOTS, raceId);
+
+        // while (result.next()) {
+        //     pilotList.add(Pilot.create(result));
+        // }
+        
+    //     return pilotList;
+    // }
+
+    public RaceCourse getRaceCoursePilots(Integer raceId){
+        
+        List<Pilot> pilotList = new ArrayList<>();
+
         SqlRowSet result = jdbcTemplate.queryForRowSet(SQL_RETRIEVE_RACE_PARTICAPTION_PILOTS, raceId);
+        
+        String raceName = "";
 
         while (result.next()) {
-            pilotList.add(RaceCourse.create(result));
+            pilotList.add(Pilot.create(result));
+            raceName = result.getString("race_name");
         }
-        
-        return pilotList;
+        return RaceCourse.create(pilotList, raceId, raceName);
     }
-
-
 
 }
