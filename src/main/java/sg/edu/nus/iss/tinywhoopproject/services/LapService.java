@@ -13,7 +13,7 @@ public class LapService {
     @Autowired
     private LapRepository lapRepository;
     
-    public List<Lap> retrieveLapTimingsOfPilotsByRaceParticipation(String pilotId, int raceId){
+    public List<Lap> retrieveLapTimingsOfPilotsByRaceParticipation(String pilotId, Integer raceId){
         return lapRepository.getLapTimingsOfPilotsByRaceParticipation(pilotId, raceId);
     }
 }

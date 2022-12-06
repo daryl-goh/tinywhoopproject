@@ -42,4 +42,13 @@ public class Lap {
         lap.setTime(rs.getDouble("time"));
         return lap;
     }
+
+    // public static Lap create (SqlRowSet rs) {
+    //     Lap lap = new Lap();
+    //     lap.setPilotId(rs.getString("pilot_id"));
+    //     lap.setPilotName(rs.getString("pilot_name"));
+    //     lap.setRaceId(rs.getInt("race_id"));
+    //     lap.setTime(rs.getDouble("time"));
+    //     return lap;
+    // }
 }

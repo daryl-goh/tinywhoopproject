@@ -39,6 +39,7 @@
             <tbody>
                 <tr th:each="pilots: ${pilotsByRace.pilot}">
                   <td>[[${pilots.pilotName}]]</td>
+                  <!-- <td><a th:href="@{/laptimer/{pilotId}/{raceId}(pilotId=${pilots.pilotId}, raceId=${pilots.raceId}))}">[[${pilots.pilotName}]]</a></td> -->
                   <td>[[${pilots.droneName}]]</td>
                   <td>[[${pilots.id}]]</td>
                 </tr>

@@ -16,7 +16,7 @@ public class LapRepository {
     @Autowired
     private JdbcTemplate jdbcTemplate;
     
-    public List<Lap> getLapTimingsOfPilotsByRaceParticipation(String pilotId, int raceId){
+    public List<Lap> getLapTimingsOfPilotsByRaceParticipation(String pilotId, Integer raceId){
         List<Lap> laps = new ArrayList<>();
 
         SqlRowSet lapTimingResult = jdbcTemplate.queryForRowSet(SQL_RETRIEVE_LAPTIMINGS_OF_PILOT_PARTICAPTION_BY_RACE, pilotId, raceId);
@@ -24,6 +24,8 @@ public class LapRepository {
         while (lapTimingResult.next()){
             laps.add(Lap.create(lapTimingResult));
         }
+
+        System.out.println("!!!" + laps);
         return laps;
     }
 }
