@@ -16,4 +16,8 @@ public class PilotService {
     public List<Pilot> retrieveAllPilots(){
         return pilotRepository.getAllPilots();
     }
+
+    public boolean addPilot(Pilot p){
+        return pilotRepository.savePilot(p);
+    }
 }

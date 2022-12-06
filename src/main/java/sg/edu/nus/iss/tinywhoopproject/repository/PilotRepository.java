@@ -1,10 +1,12 @@
 package sg.edu.nus.iss.tinywhoopproject.repository;
 
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Repository;
 
@@ -26,5 +28,9 @@ public class PilotRepository {
             pilots.add(Pilot.create(result));
         }
         return pilots;
+    }
+
+    public boolean savePilot(Pilot pilot){
+        return jdbcTemplate.update(SQL_INSERT_PILOT, pilot.getId(), pilot.getPilotName(), pilot.getDroneName()) > 0;
     }
 }
