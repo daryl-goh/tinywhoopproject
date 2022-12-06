@@ -30,7 +30,7 @@ CREATE table race_details (
     closing_date date not null,
     number_of_laps int,
     primary key (id),
-    foreign key (race_id) references race (race_id)
+    foreign key (race_id) references race (race_id) ON DELETE CASCADE  
 );
 
 create table laps (
@@ -153,8 +153,24 @@ SELECT p.pilot_id, p.pilot_name, l.race_id, l.time
 		on l.race_id  = r.race_id
 	LEFT JOIN pilot p
 		on l.pilot_id = p.pilot_id
-	WHERE l.pilot_id = '1234567B' and l.race_id = 1;
+	WHERE l.pilot_id = '1234567A' and l.race_id = 1;
 
+-- SQL_UPDATE_RACECOURSE
+UPDATE race_details rd
+JOIN race r
+	ON rd.race_id = r.race_id
+SET r.race_name = 'abc',  rd.closing_date = curdate() + 5, rd.number_of_laps = 4
+WHERE rd.race_id = 3;
+
+-- SQL_DELETE_RACECOURSE
+DELETE FROM race
+WHERE race_id = 3;
+
+SELECT * FROM race_details
+ORDER BY race_id;
+
+
+DESC race;
 ----------------------
 
 -- DROP ALL TABLES
