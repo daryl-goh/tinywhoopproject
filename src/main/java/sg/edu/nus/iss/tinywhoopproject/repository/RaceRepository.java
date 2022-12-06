@@ -15,9 +15,7 @@ import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Repository;
 
 import sg.edu.nus.iss.tinywhoopproject.model.Pilot;
-import sg.edu.nus.iss.tinywhoopproject.model.Race;
 import sg.edu.nus.iss.tinywhoopproject.model.RaceCourse;
-import sg.edu.nus.iss.tinywhoopproject.model.RaceRowMapper;
 
 import static sg.edu.nus.iss.tinywhoopproject.repository.Queries.*;
 

@@ -54,7 +54,7 @@ public class RaceCourseController {
             System.out.println("No race course to save!");
             return "redirect:/racecourses";
         }
-        
+
         RaceCourse rc = new RaceCourse();
         String raceCourseName = form.getFirst("raceNameInput");
         String raceCourseNumberOfLaps = form.getFirst("numberOfLapsInput");
