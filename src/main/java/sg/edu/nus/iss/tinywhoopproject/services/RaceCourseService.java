@@ -21,4 +21,8 @@ public class RaceCourseService {
     public RaceCourse retrievePilotsByRace(Integer raceId){
         return raceRepository.getRaceCoursePilots(raceId);
     }
+    public boolean addRaceCourse(RaceCourse rc){
+        return raceRepository.saveRaceCourse(rc);
+
+    }
 }

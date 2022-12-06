@@ -11,7 +11,7 @@ create database tinywhopdb;
 use tinywhopdb;
 
 CREATE table race (
-	race_id int not null,
+	race_id int auto_increment not null,
     race_name varchar(128) not null,
     primary key (race_id)
 );
@@ -26,7 +26,7 @@ CREATE table pilot (
 CREATE table race_details (
 	id int auto_increment not null,
 	race_id int not null,
-    pilot_id char(8) not null,
+    pilot_id char(8),
     closing_date date not null,
     number_of_laps int,
     primary key (id),

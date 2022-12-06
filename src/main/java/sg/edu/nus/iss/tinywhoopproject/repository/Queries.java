@@ -27,4 +27,13 @@ public class Queries {
                 on l.pilot_id = p.pilot_id
             WHERE l.pilot_id = ? and l.race_id = ?;
             """;
+    public static final String SQL_INSERT_RACE_COURSE = """
+            INSERT INTO race_details (race_id, pilot_id, closing_date, number_of_laps) VALUES (?, ?, ?, ?);
+            """;
+    public static final String SQL_INSERT_RACE = """
+            INSERT INTO race (race_name) VALUES (?);
+            """;
+    public static final String SQL_RETRIEVE_RACE = """
+            SELECT * from race WHERE race_id = ?;
+            """;
 }

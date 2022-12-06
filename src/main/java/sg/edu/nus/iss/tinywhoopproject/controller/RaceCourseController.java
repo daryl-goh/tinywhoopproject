@@ -50,28 +50,29 @@ public class RaceCourseController {
 
     @PostMapping (path={"/racecourse/add"})
     public String saveArticles(RedirectAttributes redirectAttributes, @RequestBody(required = false) MultiValueMap<String, String> form){
-      if (form == null) {
-        System.out.println("No race course to save!");
-        return "racecourses";
-      }
-      RaceCourse rc = new RaceCourse();
-      String raceCourseName = form.getFirst("raceNameInput");
-      String raceCourseNumberOfLaps = form.getFirst("numberOfLapsInput");
-      String raceCourseClosingDate = form.getFirst("closingDateInput");
-    
-      DateTimeFormatter df =DateTimeFormat.forPattern("yyyy-MM-dd");
-      long millis = df.parseMillis(raceCourseClosingDate);
-      Date date  = new Date(millis);
-      DateTime dateTime = new DateTime(date);
-     
-      rc.setRace(new Race(raceCourseName));
-      rc.setNumberOfLaps(Integer.parseInt(raceCourseNumberOfLaps));
-      rc.setClosingDate(dateTime);
+        if (form == null) {
+            System.out.println("No race course to save!");
+            return "redirect:/racecourses";
+        }
+        
+        RaceCourse rc = new RaceCourse();
+        String raceCourseName = form.getFirst("raceNameInput");
+        String raceCourseNumberOfLaps = form.getFirst("numberOfLapsInput");
+        String raceCourseClosingDate = form.getFirst("closingDateInput");
+        
+        DateTimeFormatter df =DateTimeFormat.forPattern("yyyy-MM-dd");
+        long millis = df.parseMillis(raceCourseClosingDate);
+        Date date  = new Date(millis);
+        DateTime dateTime = new DateTime(date);
+        
+        rc.setRace(new Race(raceCourseName));
+        rc.setNumberOfLaps(Integer.parseInt(raceCourseNumberOfLaps));
+        rc.setClosingDate(dateTime);
 
-      redirectAttributes.addFlashAttribute("message", "Race Course has been added successfully");
-    //   raceCourseService.saveRaceCourse(rc);
-  
-      return "redirect:/racecourses";
+        raceCourseService.addRaceCourse(rc);
+        redirectAttributes.addFlashAttribute("message", "Race Course has been added successfully");
+    
+        return "redirect:/racecourses";
     }
 
     // changing here
