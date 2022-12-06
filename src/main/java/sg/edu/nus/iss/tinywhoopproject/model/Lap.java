@@ -1,6 +1,7 @@
 package sg.edu.nus.iss.tinywhoopproject.model;
 
-import org.joda.time.DateTime;
+import java.util.List;
+
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 
 public class Lap {
@@ -43,12 +44,11 @@ public class Lap {
         return lap;
     }
 
-    // public static Lap create (SqlRowSet rs) {
-    //     Lap lap = new Lap();
-    //     lap.setPilotId(rs.getString("pilot_id"));
-    //     lap.setPilotName(rs.getString("pilot_name"));
-    //     lap.setRaceId(rs.getInt("race_id"));
-    //     lap.setTime(rs.getDouble("time"));
-    //     return lap;
-    // }
+    public static Lap create (String pilotId, Integer raceId) {
+        Lap lap = new Lap();
+        lap.setPilotId(pilotId);
+        lap.setRaceId(raceId);
+        
+        return lap;
+    }
 }

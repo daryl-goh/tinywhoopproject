@@ -19,7 +19,7 @@ public class Queries {
             SELECT * FROM pilot;
             """;
     public static final String SQL_RETRIEVE_LAPTIMINGS_OF_PILOT_PARTICAPTION_BY_RACE= """
-            SELECT p.pilot_name, l.lap_id, l.time
+            SELECT p.pilot_id, p.pilot_name, l.race_id, l.time
             FROM laps l
             LEFT JOIN race r
                 on l.race_id  = r.race_id

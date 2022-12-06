@@ -12,7 +12,7 @@ import sg.edu.nus.iss.tinywhoopproject.model.Lap;
 import sg.edu.nus.iss.tinywhoopproject.services.LapService;
 
 @Controller
-public class LapContoller {
+public class LapController {
     
     @Autowired
     private LapService lapService;

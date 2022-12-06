@@ -42,9 +42,10 @@ public class RaceCourseController {
     // Race Courses to Race Course Pilots Page
     @GetMapping(path={"/racecoursepilots/{raceId}"})
     public String raceCoursePilots(Model model, @PathVariable Integer raceId) {
-        RaceCourse race = raceCourseService.retrievePilotsByRace(raceId);
-        model.addAttribute("pilotsByRace", race);
-
+        RaceCourse raceCourse = raceCourseService.retrievePilotsByRace(raceId);
+        model.addAttribute("raceCourseId", raceCourse.getId());
+        model.addAttribute("raceCourse", raceCourse);
+        System.out.println("!!" + raceCourse.getId());
         return "racecoursepilots";
     }
 

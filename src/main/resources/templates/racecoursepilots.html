@@ -13,7 +13,7 @@
     <br><br>
     <div class="title">
     <h1>Race Course Pilots</h1>
-    <h2>[[${pilotsByRace.race.raceName}]]</h2>
+    <h2>[[${raceCourse.race.raceName}]]</h2>
     
     <br><br>
 
@@ -39,11 +39,12 @@
                 </tr>
             </thead>
             <tbody>
-                <tr th:each="pilots: ${pilotsByRace.pilot}">
-                  <td>[[${pilots.pilotName}]]</td>
-                  <!-- <td><a th:href="@{/laptimer/{pilotId}/{raceId}(pilotId=${pilots.pilotId}, raceId=${pilots.raceId}))}">[[${pilots.pilotName}]]</a></td> -->
-                  <td>[[${pilots.droneName}]]</td>
-                  <td>[[${pilots.id}]]</td>
+                <tr th:each="rc: ${raceCourse.pilot}">
+                  
+                  <td><a th:href="@{/laptimer/{pilotId}/{raceId}(pilotId=${rc.id}, raceId=${raceCourseId})}">[[${rc.pilotName}]]</a></td>
+
+                  <td>[[${rc.droneName}]]</td>
+                  <td>[[${rc.id}]]</td>
                   <td><!-- Edit Pilot -->
                     <button type="button" class="btn btn-primary " data-bs-toggle="modal" data-bs-target="#editModal">
                         Edit Pilot
