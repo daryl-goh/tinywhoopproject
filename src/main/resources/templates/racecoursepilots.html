@@ -34,6 +34,8 @@
                   <td>Pilot Name</td>
                   <td>Drone Name</td>
                   <td>ID</td>
+                  <td>Edit</td>
+                  <td>Delete</td>
                 </tr>
             </thead>
             <tbody>
@@ -42,6 +44,60 @@
                   <!-- <td><a th:href="@{/laptimer/{pilotId}/{raceId}(pilotId=${pilots.pilotId}, raceId=${pilots.raceId}))}">[[${pilots.pilotName}]]</a></td> -->
                   <td>[[${pilots.droneName}]]</td>
                   <td>[[${pilots.id}]]</td>
+                  <td><!-- Edit Pilot -->
+                    <button type="button" class="btn btn-primary " data-bs-toggle="modal" data-bs-target="#editModal">
+                        Edit Pilot
+                    </button>
+                    
+                    <!-- Modal -->
+                    <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="exampleModalLabel">Edit Pilot</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                            Pilot ID:
+                            <br>
+                            Name of Pilot:
+                            <br>
+                            Quad Name:
+                            </div>
+                            <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary">Save changes</button>
+                            </div>
+                        </div>
+                        </div>
+                    </div></td>
+                  <td><!-- Delete Pilot -->
+                    <button type="button" class="btn btn-primary " data-bs-toggle="modal" data-bs-target="#deleteModal">
+                        Delete Pilot
+                    </button>
+                    
+                    <!-- Modal -->
+                    <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="exampleModalLabel">Delete Pilot</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                            Pilot ID:
+                            <br>
+                            Name of Pilot:
+                            <br>
+                            Quad Name:
+                            </div>
+                            <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary">Save changes</button>
+                            </div>
+                        </div>
+                        </div>
+                    </div></td>
                 </tr>
             </tbody>
           </table>
@@ -81,63 +137,11 @@
 
     
 
-    <!-- Edit Pilot -->
-    <button type="button" class="btn btn-primary " data-bs-toggle="modal" data-bs-target="#editModal">
-        Edit Pilot
-    </button>
     
-    <!-- Modal -->
-    <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-            <h1 class="modal-title fs-5" id="exampleModalLabel">Edit Pilot</h1>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-            Pilot ID:
-            <br>
-            Name of Pilot:
-            <br>
-            Quad Name:
-            </div>
-            <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Save changes</button>
-            </div>
-        </div>
-        </div>
-    </div>
 
     
 
-    <!-- Delete Pilot -->
-    <button type="button" class="btn btn-primary " data-bs-toggle="modal" data-bs-target="#deleteModal">
-        Delete Pilot
-    </button>
     
-    <!-- Modal -->
-    <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-            <h1 class="modal-title fs-5" id="exampleModalLabel">Delete Pilot</h1>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-            Pilot ID:
-            <br>
-            Name of Pilot:
-            <br>
-            Quad Name:
-            </div>
-            <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Save changes</button>
-            </div>
-        </div>
-        </div>
-    </div>
     </div>
     
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
