@@ -36,9 +36,10 @@
                   <td>[[${race.id}]]</td>
                   <td><a th:href="@{/racecoursepilots/{raceId}(raceId=${race.id})}">[[${race.race.raceName}]]</a></td>
                   <td>[[${race.numberOfLaps}]]</td>
-                  <td>[[${race.closingDate}]]</td>
-                  <td><!-- Edit Race Course Button -->
-                    <button type="button" class="btn btn-primary " data-bs-toggle="modal" data-bs-target="#editModal" th:attr="onclick=|editButtonClick('${race.id}','${race.race.raceName}', '${race.numberOfLaps}', '${race.closingDate}')|">
+                  <td>[[${#dates.format(race.closingDate, 'dd/MM/yyyy')}]]</td>
+                  
+                  <td><!-- Edit Race Course -->
+                    <button type="button" class="btn btn-primary " data-bs-toggle="modal" data-bs-target="#editModal">
                         Edit Race
                     </button>
                   </td>
