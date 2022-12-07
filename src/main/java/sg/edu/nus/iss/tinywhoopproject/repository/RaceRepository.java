@@ -80,4 +80,17 @@ public class RaceRepository {
         return jdbcTemplate.update(SQL_INSERT_RACE_COURSE, rc.getId(), null, new Timestamp(rc.getClosingDate().toDateTime().getMillis()), rc.getNumberOfLaps()) > 0;
     }
 
+    public boolean updateRaceCourse(RaceCourse rc2) {
+        return jdbcTemplate.update(SQL_UPDATE_RACECOURSE,
+                rc2.getRace().getRaceName(),
+                new Timestamp(rc2.getClosingDate().toDateTime().getMillis()),
+                rc2.getNumberOfLaps(),
+                rc2.getId()) > 0;
+    }
+
+    public boolean deleteRaceCourse(String raceId) {
+        return jdbcTemplate.update(SQL_DELETE_RACECOURSE,
+                raceId) > 0;
+    }
+
 }

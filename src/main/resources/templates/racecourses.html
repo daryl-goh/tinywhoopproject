@@ -37,64 +37,91 @@
                   <td><a th:href="@{/racecoursepilots/{raceId}(raceId=${race.id})}">[[${race.race.raceName}]]</a></td>
                   <td>[[${race.numberOfLaps}]]</td>
                   <td>[[${race.closingDate}]]</td>
-                  <td><!-- Edit Race Course -->
-                    <button type="button" class="btn btn-primary " data-bs-toggle="modal" data-bs-target="#editModal">
+                  <td><!-- Edit Race Course Button -->
+                    <button type="button" class="btn btn-primary " data-bs-toggle="modal" data-bs-target="#editModal" th:attr="onclick=|editButtonClick('${race.id}','${race.race.raceName}', '${race.numberOfLaps}', '${race.closingDate}')|">
                         Edit Race
                     </button>
-                    
-                    <!-- Modal -->
+                  </td>
+                  <td><!-- Delete Race Course Button -->
+                    <button type="button" class="btn btn-primary " data-bs-toggle="modal" data-bs-target="#deleteModal" th:attr="onclick=|deleteButtonClick('${race.id}')|">
+                        Delete Pilot
+                    </button>
+                  </td>
+                    <!-- Edit Race Course Modal -->
                     <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog">
                         <div class="modal-content">
+                            <form method="POST" action="/racecourse/edit" id="editModalForm">
                             <div class="modal-header">
                             <h1 class="modal-title fs-5" id="exampleModalLabel">Edit Race Course</h1>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
-                            Race ID:
-                            <br>
-                            Name:
-                            <br>
-                            Number of Laps:
-                            <br>
-                            Closing Date:
+                                <div class="form-group row">
+                                    <label for="raceId" class="col-sm-2 col-form-label">ID</label>
+                                    <div class="col-sm-10 mb-4">
+                                        <input type="text" class="form-control" id="race-id" placeholder="Race ID" name="raceIdInput">
+                                      </div>
+                                    <label for="raceName" class="col-sm-2 col-form-label">Name</label>
+                                    <div class="col-sm-10 mb-4">
+                                      <input type="text" class="form-control" id="race-name" placeholder="Race Name" name="raceNameInput">
+                                    </div>
+                                  </div>
+                                  <div class="form-group row">
+                                    <label for="numberOfLaps" class="col-sm-2 col-form-label">Number of Laps</label>
+                                    <div class="col-sm-10">
+                                      <select class="form-control" id="number-of-laps" name="numberOfLapsInput">
+                                          <option>1</option>
+                                          <option>2</option>
+                                          <option>3</option>
+                                          <option>4</option>
+                                          <option>5</option>
+                                          <option>6</option>
+                                          <option>7</option>
+                                          <option>8</option>
+                                          <option>9</option>
+                                          <option>10</option>
+                                      </select>
+                                    </div>
+                                  </div>
+                                  <div class="form-group row">   
+                                      <label for="closingDate" class="col-sm-2 col-form-label">Closing Date</label>
+                                      <div class="col-sm-10">
+                                          <input id="closing-date" class="form-control" type="date" name="closingDateInput"/>
+                                      </div>
+                                  </div> 
                             </div>
                             <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary">Save changes</button>
+                            <button type="submit" class="btn btn-primary">Save changes</button>
                             </div>
+                        </form>
                         </div>
                         </div>
-                    </div></td>
-                  <td><!-- Delete Race Course -->
-                    <button type="button" class="btn btn-primary " data-bs-toggle="modal" data-bs-target="#deleteModal">
-                        Delete Race
-                    </button>
+                    </div>
+                
                     
-                    <!-- Modal -->
-                    <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                            <h1 class="modal-title fs-5" id="exampleModalLabel">Delete Race Course</h1>
+                    <!-- Delete Race Course Modal -->
+                <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                    <div class="modal-content">
+                        <form method="POST" action="/racecourse/delete" id="deleteModalForm">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="deleteModalLabel">Delete Confirmation</h1>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                            Race ID:
-                            <br>
-                            Name:
-                            <br>
-                            Number of Laps:
-                            <br>
-                            Closing Date:
-                            </div>
-                            <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary">Save changes</button>
-                            </div>
                         </div>
+                        <div class="modal-body">
+                            <span id="confirmText"></span>
+                            <input type="hidden" id="raceIdToBeDeleted" name="race-to-be-deleted">
                         </div>
-                    </div></td>
+                        <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
+                        <button type="submit" class="btn btn-primary">Yes</button>
+                        </div>
+                    </form>
+                    </div>
+                    </div>
+                </div>
                 </tr>
             </tbody>
           </table>
@@ -172,6 +199,21 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
 </body>
 <script type="text/javascript">
+    function editButtonClick(raceId, raceName, numberOfLaps, closingDate) {
+        document.getElementById("race-id").value = raceId;
+        document.getElementById("race-name").value = raceName;
+        document.getElementById("number-of-laps").value = numberOfLaps;
+        document.getElementById("closing-date").value = closingDate;
+    }
+
+    function deleteButtonClick(raceId){
+        console.log(raceId);
+        document.getElementById("confirmText").textContent = "Are you sure you want to delete this Race ID " + raceId + "?";
+        document.getElementById("raceIdToBeDeleted").value = raceId;
+    }
+
+
+
     const today = new Date().toISOString().split('T')[0];
     document.getElementById('closingDate').setAttribute('min', today);
 

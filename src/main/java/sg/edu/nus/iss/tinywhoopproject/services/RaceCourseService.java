@@ -23,6 +23,13 @@ public class RaceCourseService {
     }
     public boolean addRaceCourse(RaceCourse rc){
         return raceRepository.saveRaceCourse(rc);
+    }
+    
+    public boolean editRaceCourse(RaceCourse rc2){
+        return raceRepository.updateRaceCourse(rc2);
+    }
 
+    public boolean removeRaceCourse(String raceId){
+        return raceRepository.deleteRaceCourse(raceId);
     }
 }
