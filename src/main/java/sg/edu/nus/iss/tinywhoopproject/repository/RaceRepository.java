@@ -71,10 +71,6 @@ public class RaceRepository {
         }, keyholder);
         BigInteger primaryKeyVal = (BigInteger) keyholder.getKey();
         rc.setId(primaryKeyVal.intValue());
-        System.out.println("Race Repository: - saveRaceCourse - primary key: " + primaryKeyVal.intValue());
-
-        System.out.println("Closing date > " + rc.getClosingDate());
-        // rc.setClosingDate(new Timestamp(rc.getClosingDate().toDateTime().getMillis()));
         
         // Insert into Race Course Table
         return jdbcTemplate.update(SQL_INSERT_RACE_COURSE, rc.getId(), null, new Timestamp(rc.getClosingDate().toDateTime().getMillis()), rc.getNumberOfLaps()) > 0;
