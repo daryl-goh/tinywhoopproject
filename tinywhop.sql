@@ -39,7 +39,7 @@ create table laps (
     race_id int not null,
     time decimal(4,2),
     primary key (lap_id),
-    foreign key (pilot_id) references pilot (pilot_id),
+    foreign key (pilot_id) references pilot (pilot_id) ON DELETE CASCADE,
     foreign key (race_id) references race_details (race_id)
 );
 
@@ -166,11 +166,15 @@ WHERE rd.race_id = 3;
 DELETE FROM race
 WHERE race_id = 3;
 
-SELECT * FROM race_details
-ORDER BY race_id;
+-- SQL_UPDATE_PILOT
+UPDATE pilot p
+SET p.pilot_name = "DARYL BLUE", p.drone_name = "SKY GLAZER"
+WHERE p.pilot_id = "1234567A";
 
+-- SQL_DELETE_PILOT
+DELETE FROM pilot
+WHERE pilot_id = "1234567A";
 
-DESC race;
 ----------------------
 
 -- DROP ALL TABLES
