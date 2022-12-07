@@ -19,3 +19,10 @@
 .buttons {
   text-align: center;
 }
+
+/* Pilot Edit */
+input[readonly]{
+  background-color:transparent;
+  border: 0;
+  font-size: 1em;
+}

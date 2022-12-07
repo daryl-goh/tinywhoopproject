@@ -25,7 +25,7 @@ public class PilotService {
         return pilotRepository.updatePilot(p);
     }
 
-    public boolean removePilot(Pilot p){
-        return pilotRepository.deletePilot(p);
+    public boolean removePilot(String pilotId){
+        return pilotRepository.deletePilot(pilotId);
     }
 }

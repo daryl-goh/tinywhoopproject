@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.MultiValueMap;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -44,8 +45,8 @@ public class PilotController {
         }
 
         Pilot pilot = new Pilot();
-        String pilotName = form.getFirst("pilotNameInput");
-        String quadName = form.getFirst("quadNameInput");
+        String pilotName = form.getFirst("addPilotNameInput");
+        String quadName = form.getFirst("addQuadNameInput");
         
         String pilotId=UUID.randomUUID().toString().substring(0,8); //Generates random pilot ID
 
@@ -59,7 +60,7 @@ public class PilotController {
         return "redirect:/pilotlist";
     }
 
-    @PutMapping (path = {"/pilot/update"})
+    @PostMapping (path = {"/pilot/update"})
     public String updatePilot(RedirectAttributes redirectAttributes, @RequestBody(required = false) MultiValueMap<String, String> form){
         if (form == null){
             System.out.println("No pilot to update!");
@@ -67,8 +68,30 @@ public class PilotController {
         }
 
         Pilot pilotToUpdate = new Pilot();
-        // String pilotName = form.getFirst("")
-        return "";
+        String pilotId = form.getFirst("editPilotIdInput");
+        String pilotName = form.getFirst("editPilotNameInput");
+        String quadName = form.getFirst("editQuadNameInput");
+
+        pilotToUpdate.setId(pilotId);
+        pilotToUpdate.setPilotName(pilotName);
+        pilotToUpdate.setDroneName(quadName);
+
+        boolean isEditSuccess = pilotService.editPilot(pilotToUpdate);
+        if (isEditSuccess){
+            redirectAttributes.addFlashAttribute("message", "Pilot has been updated successfully");
+        }
+        
+        return "redirect:/pilotlist";
+    }
+
+    @PostMapping (path = {"/pilot/delete"})
+    public String deletePilot(RedirectAttributes redirectAttributes, @RequestBody(required = false) MultiValueMap<String, String> form){
+        String pilotToBeDeleted = form.getFirst("pilot-to-be-deleted");
+        boolean isDeleteSuccess = pilotService.removePilot(pilotToBeDeleted);
+        if (isDeleteSuccess){
+            redirectAttributes.addFlashAttribute("message", "Pilot has been deleted successfully");
+        }
+        return "redirect:/pilotlist";
     }
     
 }

@@ -1,12 +1,10 @@
 package sg.edu.nus.iss.tinywhoopproject.repository;
 
-import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Repository;
 
@@ -35,10 +33,10 @@ public class PilotRepository {
     }
 
     public boolean updatePilot(Pilot pilot){
-        return jdbcTemplate.update(SQL_UPDATE_PILOT, pilot.getPilotName(), pilot.getDroneName()) > 0;
+        return jdbcTemplate.update(SQL_UPDATE_PILOT, pilot.getPilotName(), pilot.getDroneName(), pilot.getId()) > 0;
     }
 
-    public boolean deletePilot(Pilot pilot){
-        return jdbcTemplate.update(SQL_DELETE_PILOT, pilot.getId()) > 0;
+    public boolean deletePilot(String pilotId){
+        return jdbcTemplate.update(SQL_DELETE_PILOT, pilotId) > 0;
     }
 }
