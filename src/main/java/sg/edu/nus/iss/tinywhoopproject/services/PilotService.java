@@ -20,4 +20,12 @@ public class PilotService {
     public boolean addPilot(Pilot p){
         return pilotRepository.savePilot(p);
     }
+
+    public boolean editPilot(Pilot p){
+        return pilotRepository.updatePilot(p);
+    }
+
+    public boolean removePilot(Pilot p){
+        return pilotRepository.deletePilot(p);
+    }
 }

@@ -33,4 +33,12 @@ public class PilotRepository {
     public boolean savePilot(Pilot pilot){
         return jdbcTemplate.update(SQL_INSERT_PILOT, pilot.getId(), pilot.getPilotName(), pilot.getDroneName()) > 0;
     }
+
+    public boolean updatePilot(Pilot pilot){
+        return jdbcTemplate.update(SQL_UPDATE_PILOT, pilot.getPilotName(), pilot.getDroneName()) > 0;
+    }
+
+    public boolean deletePilot(Pilot pilot){
+        return jdbcTemplate.update(SQL_DELETE_PILOT, pilot.getId()) > 0;
+    }
 }

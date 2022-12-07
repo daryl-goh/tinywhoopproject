@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -56,6 +57,18 @@ public class PilotController {
         redirectAttributes.addFlashAttribute("message", "Pilot has been added successfully");
     
         return "redirect:/pilotlist";
+    }
+
+    @PutMapping (path = {"/pilot/update"})
+    public String updatePilot(RedirectAttributes redirectAttributes, @RequestBody(required = false) MultiValueMap<String, String> form){
+        if (form == null){
+            System.out.println("No pilot to update!");
+            return "redirect:/pilotlist";
+        }
+
+        Pilot pilotToUpdate = new Pilot();
+        // String pilotName = form.getFirst("")
+        return "";
     }
     
 }

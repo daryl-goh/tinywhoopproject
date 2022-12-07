@@ -51,5 +51,14 @@ public class Queries {
                 DELETE FROM race
                 WHERE race_id = ?;
                 """;
+        public static final String SQL_UPDATE_PILOT = """
+                UPDATE pilot p
+                SET p.pilot_name = ? , p.drone_name = ?
+                WHERE p.pilot_id = ?;
+                """;
+        public static final String SQL_DELETE_PILOT = """
+                DELETE FROM pilot
+                WHERE pilot_id = ?;
+                """;
 
 }
