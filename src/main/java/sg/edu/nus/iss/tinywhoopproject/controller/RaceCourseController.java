@@ -104,9 +104,9 @@ public class RaceCourseController {
         String raceToBeDeleted = form.getFirst("race-to-be-deleted");
         boolean isDeleteSuccess = raceCourseService.removeRaceCourse(raceToBeDeleted);
         if (isDeleteSuccess){
-            redirectAttributes.addFlashAttribute("message", "Pilot has been deleted successfully");
+            redirectAttributes.addFlashAttribute("message", "Race Course has been deleted successfully");
         }
-        return "redirect:/pilotlist";
+        return "redirect:/racecourses";
     }
 
 
