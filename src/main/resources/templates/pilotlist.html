@@ -10,12 +10,27 @@
     <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}">
 </head>
 <body>
+    <!-- Navigation Bar-->
+    <ul class="nav justify-content-center">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="/">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/racecourses">Race Courses</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/pilotlist">Pilots</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" >About Us</a>
+        </li>
+      </ul>
     <div th:if="${message != null}" class="alert alert-success alert-dismissible fade show text-center" role="alert">
         [[${message}]]
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div> 
   
-
+    <br><br>
     <div class="title">
       <h1>List of Pilots</h1>
     </div>
