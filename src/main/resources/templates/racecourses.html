@@ -39,7 +39,7 @@
                   <td>[[${#dates.format(race.closingDate, 'dd/MM/yyyy')}]]</td>
                   
                   <td><!-- Edit Race Course -->
-                    <button type="button" class="btn btn-primary " data-bs-toggle="modal" data-bs-target="#editModal">
+                    <button type="button" class="btn btn-primary " data-bs-toggle="modal" data-bs-target="#editModal" th:attr="onclick=|editButtonClick('${race.id}','${race.race.raceName}', '${race.numberOfLaps}', '${race.closingDate}')|">
                         Edit Race
                     </button>
                   </td>
@@ -61,7 +61,7 @@
                                 <div class="form-group row">
                                     <label for="raceId" class="col-sm-2 col-form-label">ID</label>
                                     <div class="col-sm-10 mb-4">
-                                        <input type="text" class="form-control" id="race-id" placeholder="Race ID" name="raceIdInput">
+                                        <input type="text" class="form-control" id="race-id" placeholder="Race ID" name="raceIdInput" readonly="readonly">
                                       </div>
                                     <label for="raceName" class="col-sm-2 col-form-label">Name</label>
                                     <div class="col-sm-10 mb-4">
