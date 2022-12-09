@@ -32,4 +32,8 @@ public class RaceCourseService {
     public boolean removeRaceCourse(String raceId){
         return raceRepository.deleteRaceCourse(raceId);
     }
+
+    public List<RaceCourse> retrieveRaceCourseById(Integer raceId){
+        return raceRepository.getRaceCourseByRaceId(raceId);
+    }
 }

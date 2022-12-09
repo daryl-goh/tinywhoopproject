@@ -16,14 +16,19 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import sg.edu.nus.iss.tinywhoopproject.model.Pilot;
 import sg.edu.nus.iss.tinywhoopproject.model.Race;
 import sg.edu.nus.iss.tinywhoopproject.model.RaceCourse;
+import sg.edu.nus.iss.tinywhoopproject.services.PilotService;
 import sg.edu.nus.iss.tinywhoopproject.services.RaceCourseService;
 
 @Controller
 public class RaceCourseController {
     @Autowired
     private RaceCourseService raceCourseService;
+
+    @Autowired
+    private PilotService pilotService;
     
     // Landing Page to Race Courses Page
     @GetMapping(path={"/racecourses"})
@@ -37,6 +42,10 @@ public class RaceCourseController {
     @GetMapping(path={"/racecoursepilots/{raceId}"})
     public String raceCoursePilots(Model model, @PathVariable Integer raceId) {
         RaceCourse raceCourse = raceCourseService.retrievePilotsByRace(raceId);
+        List<Pilot> listOfPilots = pilotService.retrieveAllPilots();
+
+        model.addAttribute("selectedRaceId", raceId);
+        model.addAttribute("pilotList", listOfPilots);
         model.addAttribute("raceCourseId", raceCourse.getId());
         model.addAttribute("raceCourse", raceCourse);
         return "racecoursepilots";

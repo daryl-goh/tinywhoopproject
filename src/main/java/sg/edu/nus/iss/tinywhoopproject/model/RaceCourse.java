@@ -61,23 +61,32 @@ public class RaceCourse {
         return rc;
     }
 
+    public static RaceCourse create (SqlRowSet raceCourseResult){
+        RaceCourse rc = new RaceCourse();
+        rc.setId(raceCourseResult.getInt("id"));
+        String dateTime = raceCourseResult.getString("closing_date");
+        // Format for input
+        DateTimeFormatter dtf = DateTimeFormat.forPattern("yyyy-MM-dd");
+        // Parsing the date
+        DateTime jodatime = dtf.parseDateTime(dateTime);
+        rc.setClosingDate(jodatime);
+        rc.setNumberOfLaps(raceCourseResult.getInt("number_of_laps"));
+        
+        return rc;
+    }
+
     public static RaceCourse create (List<Pilot> pilotList, Integer raceId, String raceName) {
         RaceCourse rc2 = new RaceCourse();
         rc2.setId(raceId);
         rc2.setRace(new Race(raceName));
         rc2.setPilot(pilotList);
-        // rc2.setRace(new Race(results.getString("race_name")));
-        // System.out.println(results.getString("race_name"));
-        // String dateTime = result.getString("closing_date");
-        // Format for input
-        // DateTimeFormatter dtf = DateTimeFormat.forPattern("yyyy-MM-dd");
-        // Parsing the date
-        // DateTime jodatime = dtf.parseDateTime(dateTime);
-        // rc2.setClosingDate(jodatime);
-        // rc2.setNumberOfLaps(result.getInt("number_of_laps"));
-
         return rc2;
     }
+
+      @Override
+      public String toString() {
+          return "Race Course Id: " + this.id +  ", Race Course Date Time: " + this.closingDate + ", Race Course Number of Laps: " + this.numberOfLaps;
+      }
 
 
 }

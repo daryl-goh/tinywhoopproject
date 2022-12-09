@@ -7,6 +7,7 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.joda.time.DateTime;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
@@ -39,6 +40,19 @@ public class RaceRepository {
             }
           
             races.add(RaceCourse.create(raceCourseResults, pilotsByRaceCourse));       
+        }
+        
+        return races;
+    }
+
+    public List<RaceCourse> getRaceCourseByRaceId(Integer raceId){
+        List<RaceCourse> races = new ArrayList<>();
+        List<Pilot> pilotsByRaceCourse = new ArrayList<>();
+
+        SqlRowSet raceCourseResults = jdbcTemplate.queryForRowSet(SQL_RETRIEVE_RACECOURSE_BY_RACEID, raceId);
+        
+        while(raceCourseResults.next()){
+            races.add(RaceCourse.create(raceCourseResults));       
         }
         
         return races;
@@ -87,6 +101,11 @@ public class RaceRepository {
     public boolean deleteRaceCourse(String raceId) {
         return jdbcTemplate.update(SQL_DELETE_RACECOURSE,
                 raceId) > 0;
+    }
+
+    public boolean savePilotsToRaceCourse(Integer raceId, Integer numberOfLaps, DateTime closingDate, String pilotId){
+        // Insert into Race Course Table
+        return jdbcTemplate.update(SQL_INSERT_EXISTING_PILOT_INTO_EXISTING_RACE_COURSE, raceId, pilotId, new Timestamp(closingDate.toDateTime().getMillis()), numberOfLaps) > 0;
     }
 
 }

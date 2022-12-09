@@ -1,165 +1,182 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
-
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.13/css/bootstrap-multiselect.css"
+    />
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" />
     <title>Race Course Pilots</title>
-    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}">
-</head>
-<body>
+  </head>
+  <body>
     <!-- Navigation Bar-->
     <ul class="nav justify-content-center">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="/">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/racecourses">Race Courses</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/pilotlist">Pilots</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" >About Us</a>
-        </li>
-      </ul>
-    <br><br>
+      <li class="nav-item">
+        <a class="nav-link active" aria-current="page" href="/">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/racecourses">Race Courses</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/pilotlist">Pilots</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link">About Us</a>
+      </li>
+    </ul>
+    <div
+    th:if="${message != null}"
+    class="alert alert-success alert-dismissible fade show text-center"
+    role="alert"
+  >
+    [[${message}]]
+    <button
+      type="button"
+      class="btn-close"
+      data-bs-dismiss="alert"
+      aria-label="Close"
+    ></button>
+  </div>
+    <br /><br />
     <div class="title">
-    <h1>Race Course Pilots</h1>
-    <h2>[[${raceCourse.race.raceName}]]</h2>
-    
-    <br><br>
-
-    
-        
-            <!-- <a class="laptimer" href="/laptimer">Adam</a> <br>
-            2. Bob <br>
-            3. Calvin <br>
-            4. Delan <br>
-         -->
+      <h1>Race Course Pilots</h1>
+      <h2>[[${raceCourse.race.raceName}]]</h2>
     </div>
 
     <div>
-        <table id="result-table" class="table table-striped">
-            <thead>
-                <tr>
-                    
-                  <td>Pilot Name</td>
-                  <td>Drone Name</td>
-                  <td>ID</td>
-                  <!-- <td>Edit</td> -->
-                  <!-- <td>Delete</td> -->
-                </tr>
-            </thead>
-            <tbody>
-                <tr th:each="rc: ${raceCourse.pilot}">
-                  
-                  <td><a th:href="@{/laptimer/{pilotId}/{raceId}(pilotId=${rc.id}, raceId=${raceCourseId})}">[[${rc.pilotName}]]</a></td>
-
-                  <td>[[${rc.droneName}]]</td>
-                  <td>[[${rc.id}]]</td>
-                  <td><!-- Edit Pilot -->
-                    <!-- <button type="button" class="btn btn-primary " data-bs-toggle="modal" data-bs-target="#editModal">
-                        Edit Pilot
-                    </button> -->
-                    
-                    <!-- Modal -->
-                    <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                            <h1 class="modal-title fs-5" id="exampleModalLabel">Edit Pilot</h1>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                            Pilot ID:
-                            <br>
-                            Name of Pilot:
-                            <br>
-                            Quad Name:
-                            </div>
-                            <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary">Save changes</button>
-                            </div>
-                        </div>
-                        </div>
-                    </div></td>
-                  <td><!-- Delete Pilot -->
-                    <!-- <button type="button" class="btn btn-primary " data-bs-toggle="modal" data-bs-target="#deleteModal">
-                        Delete Pilot
-                    </button> -->
-                    
-                    <!-- Modal -->
-                    <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                            <h1 class="modal-title fs-5" id="exampleModalLabel">Delete Pilot</h1>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                            Pilot ID:
-                            <br>
-                            Name of Pilot:
-                            <br>
-                            Quad Name:
-                            </div>
-                            <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary">Save changes</button>
-                            </div>
-                        </div>
-                        </div>
-                    </div></td>
-                </tr>
-            </tbody>
-          </table>
+      <table id="result-table" class="table table-striped">
+        <thead>
+          <tr>
+            <td>Pilot Name</td>
+            <td>Drone Name</td>
+            <td>ID</td>
+          </tr>
+         </thead>
+       <tbody th:if="${raceCourse.id != null}">
+          
+           <tr th:each="rc: ${raceCourse.pilot}">
+            <td>
+              <a
+                th:href="@{/laptimer/{pilotId}/{raceId}(pilotId=${rc.id}, raceId=${raceCourseId})}"
+                >[[${rc.pilotName}]]</a
+              >
+            </td>
+            <td>[[${rc.droneName}]]</td>
+            <td>[[${rc.id}]]</td>
+          </tr> 
+        </tbody>
+        <!-- <tbody th:if="${raceCourse.pilot} != null">
+          <span>No Pilots Participation In Race Course</span>
+        </tbody> -->
+      </table>
     </div>
-    
 
-    <br><br>
+    <br /><br />
 
     <!-- Add Pilot -->
     <div class="buttons">
-    <button type="button" class="btn btn-primary " data-bs-toggle="modal" data-bs-target="#addModal">
+      <button
+        type="button"
+        class="btn btn-primary"
+        data-bs-toggle="modal"
+        data-bs-target="#addModal"
+      >
         Add Pilot
-    </button>
-    
-    <!-- Modal -->
-    <div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      </button>
+
+      <!-- Modal -->
+      <div
+        class="modal fade"
+        id="addModal"
+        tabindex="-1"
+        aria-labelledby="exampleModalLabel"
+        aria-hidden="true"
+      >
         <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-            <h1 class="modal-title fs-5" id="exampleModalLabel">Add Pilot</h1>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-            Pilot ID:
-            <br>
-            Name of Pilot:
-            <br>
-            Quad Name:
-            </div>
-            <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Save changes</button>
-            </div>
+          <div class="modal-content">
+            <form
+              method="POST"
+              th:action="@{/racecoursepilots/add/{raceId}(raceId=${selectedRaceId})}"
+              id="addModalForm"
+            >
+              <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">
+                  Add Pilot
+                </h1>
+                <button
+                  type="button"
+                  class="btn-close"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                ></button>
+              </div>
+              <div class="modal-body">
+                <strong>Select Pilot:</strong>
+                <select
+                  class="form-select"
+                  id="pilot-select"
+                  multiple="multiple"
+                  name="selected-pilots"
+                >
+                  <option
+                    name="pilotSelection"
+                    th:each="pilot : ${pilotList}"
+                    th:value="${pilot.id}"
+                    th:text="|${pilot.pilotName}, ${pilot.id}|"
+                  ></option>
+                </select>
+              </div>
+              <div class="modal-footer">
+                <button
+                  type="button"
+                  class="btn btn-secondary"
+                  data-bs-dismiss="modal"
+                >
+                  Close
+                </button>
+                <button type="submit" class="btn btn-primary">
+                  Save changes
+                </button>
+              </div>
+            </form>
+          </div>
         </div>
-        </div>
+      </div>
     </div>
 
-    
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.13/js/bootstrap-multiselect.js"></script>
+    <script>
+      $(document).ready(function () {
+        $("#pilot-select").multiselect({
+          templates: {
+            button:
+              '<button type="button" class="multiselect dropdown-toggle btn btn-light" data-bs-toggle="dropdown" aria-expanded="false"><span class="multiselect-selected-text"></span></button>',
+          },
+        });
+      });
 
-    
-
-    
-
-    
-    </div>
-    
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
-</body>
+      const addModal = document.getElementById("addModal");
+      addModal.addEventListener("hidden.bs.modal", () => {
+        $("option", $("#pilot-select")).each(function (element) {
+          $(this).removeAttr("selected").prop("selected", false);
+        });
+        $("#pilot-select").multiselect("refresh");
+      });
+    </script>
+  </body>
 </html>

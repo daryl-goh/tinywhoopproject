@@ -175,6 +175,18 @@ WHERE p.pilot_id = "1234567A";
 DELETE FROM pilot
 WHERE pilot_id = "1234567A";
 
+-- SQL_RETRIEVE_RACECOURSE_BY_RACEID
+SELECT * FROM race_details 
+WHERE race_id = 2;
+
+-- SQL_INSERT_EXISTING_PILOT_INTO_EXISTING_RACE_COURSE
+INSERT INTO race_details (race_id, pilot_id, closing_date, number_of_laps)
+VALUES (3, '1234567C', curdate() + 5, 7);
+
+SELECT * FROM race_details;
+
+desc race_details;
+
 ----------------------
 
 -- DROP ALL TABLES

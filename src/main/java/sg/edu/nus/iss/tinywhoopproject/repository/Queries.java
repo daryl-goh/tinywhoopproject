@@ -60,5 +60,13 @@ public class Queries {
                 DELETE FROM pilot
                 WHERE pilot_id = ?;
                 """;
+        public static final String SQL_RETRIEVE_RACECOURSE_BY_RACEID = """
+                SELECT * FROM race_details 
+                WHERE race_id = ?;        
+                """;
+        public static final String SQL_INSERT_EXISTING_PILOT_INTO_EXISTING_RACE_COURSE = """
+                INSERT INTO race_details (race_id, pilot_id, closing_date, number_of_laps)
+                VALUES (?, ?, ?, ?);        
+                """;
 
 }
