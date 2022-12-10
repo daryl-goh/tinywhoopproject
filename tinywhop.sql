@@ -61,6 +61,8 @@ DESC pilot;
 INSERT INTO pilot (pilot_id, pilot_name, drone_name) VALUES ('1234567A', 'DARYL GOH', 'HACKERDRONE_DG');
 INSERT INTO pilot (pilot_id, pilot_name, drone_name) VALUES ('1234567B', 'YIZHUN SIM', 'HACKERDRONE_YZ');
 INSERT INTO pilot (pilot_id, pilot_name, drone_name) VALUES ('1234567C', 'DARREN', 'HACKERDRONE_DAR');
+INSERT INTO pilot (pilot_id, pilot_name, drone_name) VALUES ('1234567D', 'KENNETH', 'HACKERDRONE_KEN');
+INSERT INTO pilot (pilot_id, pilot_name, drone_name) VALUES ('1234567E', 'CHUK', 'HACKERDRONE_CHUK');
 
 -- SELECT PILOT
 SELECT * FROM pilot;
@@ -82,6 +84,16 @@ INSERT INTO race_details (race_id, pilot_id, closing_date, number_of_laps) VALUE
 -- Darren
 INSERT INTO race_details (race_id, pilot_id, closing_date, number_of_laps) VALUES (3, '1234567C', NOW() + INTERVAL 30 DAY, 8);
 
+-- Kenneth
+INSERT INTO race_details (race_id, pilot_id, closing_date, number_of_laps) VALUES (1, '1234567D', NOW() + INTERVAL 10 DAY, 8);
+INSERT INTO race_details (race_id, pilot_id, closing_date, number_of_laps) VALUES (2, '1234567D', NOW() + INTERVAL 20 DAY, 8);
+INSERT INTO race_details (race_id, pilot_id, closing_date, number_of_laps) VALUES (3, '1234567D',  NOW() + INTERVAL 30 DAY, 8);
+
+-- Chuk
+INSERT INTO race_details (race_id, pilot_id, closing_date, number_of_laps) VALUES (1, '1234567E', NOW() + INTERVAL 10 DAY, 8);
+INSERT INTO race_details (race_id, pilot_id, closing_date, number_of_laps) VALUES (2, '1234567E', NOW() + INTERVAL 20 DAY, 8);
+INSERT INTO race_details (race_id, pilot_id, closing_date, number_of_laps) VALUES (3, '1234567E',  NOW() + INTERVAL 30 DAY, 8);
+
 -- SELECT RACE COURSE -> List of Race Course
 SELECT * FROM race_details;
 
@@ -96,15 +108,41 @@ INSERT INTO laps (pilot_id, race_id, time) VALUES ('1234567A', 1, '9.15');
 INSERT INTO laps (pilot_id, race_id, time) VALUES ('1234567A', 1, '9.25');
 INSERT INTO laps (pilot_id, race_id, time) VALUES ('1234567A', 1, '9.35');
 INSERT INTO laps (pilot_id, race_id, time) VALUES ('1234567A', 1, '9.55');
-INSERT INTO laps (pilot_id, race_id, time) VALUES ('1234567A', 1, '10.20');
-INSERT INTO laps (pilot_id, race_id, time) VALUES ('1234567A', 1, '10.30');
-INSERT INTO laps (pilot_id, race_id, time) VALUES ('1234567A', 1, '9.33');
+INSERT INTO laps (pilot_id, race_id, time) VALUES ('1234567A', 2, '10.20');
+INSERT INTO laps (pilot_id, race_id, time) VALUES ('1234567A', 2, '10.30');
+INSERT INTO laps (pilot_id, race_id, time) VALUES ('1234567A', 3, '9.33');
 
 -- Yizhun
-INSERT INTO laps (pilot_id, race_id, time) VALUES ('1234567B', 1, '10.30');
+INSERT INTO laps (pilot_id, race_id, time) VALUES ('1234567B', 2, '10.30');
+INSERT INTO laps (pilot_id, race_id, time) VALUES ('1234567B', 2, '9.46');
+INSERT INTO laps (pilot_id, race_id, time) VALUES ('1234567B', 2, '10.20');
+INSERT INTO laps (pilot_id, race_id, time) VALUES ('1234567B', 3, '9.46');
 
--- DARREN
-INSERT INTO laps (pilot_id, race_id, time) VALUES ('1234567C', 2, '10.19');
+-- Darren
+INSERT INTO laps (pilot_id, race_id, time) VALUES ('1234567C', 3, '10.19');
+INSERT INTO laps (pilot_id, race_id, time) VALUES ('1234567C', 3, '10.29');
+INSERT INTO laps (pilot_id, race_id, time) VALUES ('1234567C', 3, '10.39');
+
+
+-- Kenneth
+INSERT INTO laps (pilot_id, race_id, time) VALUES ('1234567D', 1, '10.10');
+INSERT INTO laps (pilot_id, race_id, time) VALUES ('1234567D', 1, '9.15');
+INSERT INTO laps (pilot_id, race_id, time) VALUES ('1234567D', 1, '10.25');
+INSERT INTO laps (pilot_id, race_id, time) VALUES ('1234567D', 1, '9.35');
+INSERT INTO laps (pilot_id, race_id, time) VALUES ('1234567D', 1, '10.25');
+INSERT INTO laps (pilot_id, race_id, time) VALUES ('1234567D', 2, '10.20');
+INSERT INTO laps (pilot_id, race_id, time) VALUES ('1234567D', 2, '10.30');
+INSERT INTO laps (pilot_id, race_id, time) VALUES ('1234567D', 3, '9.33');
+
+-- Chuk
+INSERT INTO laps (pilot_id, race_id, time) VALUES ('1234567E', 1, '10.10');
+INSERT INTO laps (pilot_id, race_id, time) VALUES ('1234567E', 1, '9.15');
+INSERT INTO laps (pilot_id, race_id, time) VALUES ('1234567E', 1, '10.25');
+INSERT INTO laps (pilot_id, race_id, time) VALUES ('1234567E', 1, '9.35');
+INSERT INTO laps (pilot_id, race_id, time) VALUES ('1234567E', 2, '10.25');
+INSERT INTO laps (pilot_id, race_id, time) VALUES ('1234567E', 2, '10.20');
+INSERT INTO laps (pilot_id, race_id, time) VALUES ('1234567E', 2, '10.30');
+INSERT INTO laps (pilot_id, race_id, time) VALUES ('1234567E', 3, '9.33');
 
 -- SELECT LAPS
 SELECT * FROM laps;
