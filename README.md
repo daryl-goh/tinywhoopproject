@@ -42,12 +42,12 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-Screenshot: <img src="src\main\resources\static\images\TinyWhoopWebCapture.jpeg" alt="Product Screenshot">
-
-The Tiny Whoop League project is built entirely using Spring Boot (a Java-based framework), BootStrap (an open source front-end development framework) and MySQL as a database.
+The Tiny Whoop League project was built entirely using Spring Boot (a Java-based framework), BootStrap (an open source front-end development framework) and MySQL as a database.
 
 The project goal was to built a web application where Tiny Whoop drone racers can easily participate in races in the Tiny Whoop League using our inituitive website.
 
+
+Screenshot: <img src="src\main\resources\static\images\TinyWhoopWebCapture.jpeg" alt="Product Screenshot">
 
 MySQL Schema: <img src="src\main\resources\static\images\Schema.jpeg" alt="Schema">
 
