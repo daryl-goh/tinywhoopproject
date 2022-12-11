@@ -4,13 +4,13 @@
 <br />
 <div align="center">
   
-    <img src="src\main\resources\static\images\TinyWhoopLogo.png" alt="Logo">
+    
   </a>
 
 <h3 align="center">Tiny Whoop League Project</h3>
-
+  <img src="src\main\resources\static\images\TinyWhoopLogo.png" alt="Logo">
   <p align="center">
-    
+    project_description
     <br />
     <a href="https://github.com/daryl-goh/tinywhoopproject"><strong>Explore the docs »</strong></a>
     <br />
@@ -42,14 +42,14 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://rambunctious-glass-production.up.railway.app/)
+Screenshot: <img src="src\main\resources\static\images\TinyWhoopWebCapture.jpeg" alt="Product Screenshot">
 
 The Tiny Whoop League project is built entirely using Spring Boot (a Java-based framework), BootStrap (an open source front-end development framework) and MySQL as a database.
 
 The project goal was to built a web application where Tiny Whoop drone racers can easily participate in races in the Tiny Whoop League using our inituitive website.
 
 
-MySQL Schema: <img src="src\main\resources\static\images\Schema.jpeg" alt="Logo">
+MySQL Schema: <img src="src\main\resources\static\images\Schema.jpeg" alt="Schema">
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -111,6 +111,5 @@ Project Link: [https://github.com/daryl-goh/tinywhoopproject](https://github.com
 
 
 <!-- MARKDOWN LINKS & IMAGES -->
-[product-screenshot]: src\main\resources\static\images\TinyWhoopWebCapture.jpeg
 [Bootstrap.com]: https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white
 [Bootstrap-url]: https://getbootstrap.com
