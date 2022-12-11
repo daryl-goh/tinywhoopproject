@@ -4,7 +4,7 @@
 <br />
 <div align="center">
   
-    <img src="images/TinyWhoopLogo.png" alt="Logo" width="80" height="80">
+    <img src="src\main\resources\static\images\TinyWhoopLogo.png" alt="Logo" width="80" height="80">
   </a>
 
 <h3 align="center">Tiny Whoop League Project</h3>
@@ -49,7 +49,7 @@ The Tiny Whoop League project is built entirely using Spring Boot (a Java-based 
 The project goal was to built a web application where Tiny Whoop drone racers can easily participate in races in the Tiny Whoop League using our inituitive website.
 
 
-MySQL Schema: <img src="images/TinyWhoopLogo.png" alt="Logo" width="80" height="80">
+MySQL Schema: <img src="src\main\resources\static\images\Schema.jpeg" alt="Logo" width="80" height="80">
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -98,8 +98,8 @@ Don't forget to give the project a star! Thanks again!
 ## Contact
 This project was done by:
 
-Sim Yizhun - https://github.com/YizhunSim
-Daryl Goh - https://github.com/daryl-goh
+Sim Yizhun - https://github.com/YizhunSim  
+Daryl Goh - https://github.com/daryl-goh  
 
 Project Link: [https://github.com/daryl-goh/tinywhoopproject](https://github.com/daryl-goh/tinywhoopproject)
 
@@ -111,6 +111,6 @@ Project Link: [https://github.com/daryl-goh/tinywhoopproject](https://github.com
 
 
 <!-- MARKDOWN LINKS & IMAGES -->
-[product-screenshot]: images/TinyWhoopLogo.png
+[product-screenshot]: src\main\resources\static\images\TinyWhoopWebCapture.jpeg
 [Bootstrap.com]: https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white
 [Bootstrap-url]: https://getbootstrap.com
