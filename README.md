@@ -4,13 +4,13 @@
 <br />
 <div align="center">
   
-    <img src="src\main\resources\static\images\TinyWhoopLogo.png" alt="Logo" width="80" height="80">
+    <img src="src\main\resources\static\images\TinyWhoopLogo.png" alt="Logo">
   </a>
 
 <h3 align="center">Tiny Whoop League Project</h3>
 
   <p align="center">
-    project_description
+    
     <br />
     <a href="https://github.com/daryl-goh/tinywhoopproject"><strong>Explore the docs »</strong></a>
     <br />
@@ -49,7 +49,7 @@ The Tiny Whoop League project is built entirely using Spring Boot (a Java-based 
 The project goal was to built a web application where Tiny Whoop drone racers can easily participate in races in the Tiny Whoop League using our inituitive website.
 
 
-MySQL Schema: <img src="src\main\resources\static\images\Schema.jpeg" alt="Logo" width="80" height="80">
+MySQL Schema: <img src="src\main\resources\static\images\Schema.jpeg" alt="Logo">
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
